@@ -1,12 +1,7 @@
 <!doctype html>
-<html lang="en">
-<head>
-<!-- results.json SHA-256: 361a44f3e20ab513c5f43a4516b08c0a4dce4828bba0d10ef583065473d54c9b -->
-<meta charset="utf-8"><meta name="robots" content="noindex, nofollow">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Retail ASR baseline: 14 scenarios, 28 scored voice conversations. Provisional WER and task outcomes, with review limitations.">
-<title>Retail ASR baseline · 17 Nov 2026</title>
-<style>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><meta name="description" content="Latest retail ASR findings: more account retrievals observed with live name corrections, but no task-pass improvement. Baseline WER remains provisional.">
+<title>Retail ASR findings · Updated 18 Nov 2026</title><style>
 :root{color-scheme:light;--ink:#192820;--muted:#526359;--line:#dce4de;--green:#315d16;--wash:#f2f6ee;--amber:#805813}
 *{box-sizing:border-box}body{margin:0;background:#f4f6f3;color:var(--ink);font:15px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 main{max-width:960px;margin:32px auto;padding:38px 42px;background:white;border:1px solid var(--line);border-radius:16px}
@@ -24,62 +19,34 @@ details{border:1px solid var(--line);border-radius:9px;margin-top:22px;padding:1
 ul,ol{padding-left:21px;margin:9px 0}li{margin:7px 0}.next li{font-size:14px}a{color:var(--green);text-underline-offset:3px}.fine{font-size:12px;color:var(--muted)}footer{border-top:1px solid var(--line);padding-top:15px;margin-top:23px;font-size:11px;color:var(--muted)}footer p{margin:4px 0}
 @media(max-width:650px){main{margin:0;padding:24px 18px;border:0;border-radius:0}.metrics{gap:7px}.metric{padding:12px 10px}.metric strong{font-size:28px}.metric span{font-size:12px}.two-col{grid-template-columns:1fr;gap:0}.flow{grid-template-columns:repeat(2,1fr)}th,td{padding:8px 6px}.compact{min-width:630px}}
 @media print{body{background:white;font-size:10pt}main{max-width:none;margin:0;padding:0;border:0}.metrics,.flow,tr{break-inside:avoid}h2{break-after:avoid}.metric{print-color-adjust:exact}details{break-inside:auto}details::details-content{display:contents;content-visibility:visible}details>*:not(summary){display:block!important}summary{list-style:none}.table-wrap{overflow:visible}.compact{font-size:9pt}a{color:inherit}footer{font-size:8pt}}
-</style>
-</head>
-<body>
-<main><nav aria-label="Report pages" style="font-size:12px;margin-bottom:18px"><a href="./">Summary report</a> · <a href="./investigation.html">Detailed investigation</a> · <a href="./counterfactual.html">Correction experiment</a> · <a href="./live-caller.html">Live comparison</a></nav>
-<header>
-<p class="eyebrow">ASR language-model customization · Retail POC · 17 Nov 2026</p>
-<h1>Retail voice ASR baseline</h1>
-<p class="lede">Measure speech-recognition errors before customization, then determine which errors actually prevent the assistant from completing a customer’s request.</p>
-<span class="status">Provisional baseline · No language-model training performed</span>
-</header><section aria-labelledby="latest-live-comparison"><h2 id="latest-live-comparison">Latest: live caller comparison</h2><p><strong>Original: 0/9 tasks passed. Corrected: 0/9.</strong> The frozen name corrections actually triggered in 6/9 treated calls. These are 18 new live conversations, separate from the baseline and transcript replay. <a href="./live-caller.html">Read the live results and interpretation</a>.</p></section><section aria-labelledby="correction-followup"><h2 id="correction-followup">New: original versus corrected ASR text</h2><p><strong>0 paired task-score changes from 0 to 1 in 18 transcript replays.</strong> Three candidate cases were run with original and corrected text, three times per version. Customer lookup successes (original → corrected): 005-control: 0/3 → 0/3; 005-regular: 0/3 → 1/3; 037-regular: 0/3 → 1/3.</p><p class="fine">These are conditional text replays using the saved agent runtime and native task checks. Caller speech is frozen and cannot answer new questions, so these replay results remain distinct from the live comparison below. The early Kovac/Kovacs audio remains disputed and was excluded from correction. <a href="./counterfactual.html">Read the comparison and audio checks</a>.</p></section>
+</style></head><body><main>
+<nav aria-label="Report pages"><a href="./">Latest findings</a> · <a href="./live-caller.html">Live comparison</a> · <a href="./investigation.html">Initial investigation</a> · <a href="./counterfactual.html">Transcript replay</a></nav>
+<header><p class="eyebrow">Retail ASR language-model POC · Updated 18 November 2026</p>
+<h1>More account retrievals, no task-pass improvement</h1>
+<p class="lede">The live comparison observed more customer/account retrievals with selected name corrections. Both versions still passed zero tasks. Task-score benefit from language-model training remains unproven.</p>
+<span class="status">Exploratory result · No LM trained · Golden WER pending</span></header>
 
-<div class="metrics" aria-label="Key results">
-<div class="metric"><strong>8.41%</strong><span>Provisional word error rate</span><small>318 errors / 3,781 words · 26 conversations</small></div>
-<div class="metric"><strong>2 / 28</strong><span>Conversations passed</span><small>26 failed · native benchmark task scores</small></div>
-<div class="metric"><strong>0 / 28</strong><span>Human-verified references</span><small>Golden WER is still pending</small></div>
-</div>
-<p class="note"><strong>Initial trajectory review: 3 of 26 failures likely involve an ASR contribution.</strong> Mixed causes are possible. This does not establish how many tasks would be rescued by an ASR correction or LM training.</p>
-
-<section aria-labelledby="trajectory-judgment"><h2 id="trajectory-judgment">Did ASR contribute to the failures?</h2><p><strong>Trajectory-based judgment: ASR likely contributed to 3 of the 26 failed conversations.</strong> 19 have stronger agent, voice-flow or task-criteria explanations; 4 remain unclear.</p><div class="table-wrap scroll"><table><caption>Likely contributions, including mixed causes. Each judgment has moderate confidence and uses provisional machine audio references.</caption><thead><tr><th scope="col">Conversation</th><th scope="col">Evidence chain</th></tr></thead><tbody><tr><th scope="row">005-control</th><td>Audio draft: Kovacs → ASR: COVAX → lookup uses covax → user not found. Unspelled-name ambiguity and agent assembly errors remain.</td></tr><tr><th scope="row">005-regular</th><td>The initial Kovac spelling is disputed by new audio checks. Later ASR says coax during a repeated surname; the agent also fails to use explicit spelled letters. See the correction experiment.</td></tr><tr><th scope="row">037-regular</th><td>Audio draft: Daiki → ASR: Dakey → name/postal-code lookup fails; the order is never retrieved.</td></tr></tbody></table></div><p class="fine"><strong>This is a qualitative judgment, not a measured task-rescue count.</strong> No case is established as caused solely by ASR. A stronger other-cause explanation does not rule out an ASR contribution. Conditional transcript-replay tests have now run; see the follow-up below. Live caller comparisons are now available in the latest follow-up.</p></section>
-
-<div class="two-col">
-<section aria-labelledby="scope"><h2 id="scope">What we tested</h2>
-<p><strong>14 customer situations × 2 speech presets = 28 conversations.</strong> Each situation keeps the same customer goal, but the actual words and conversation path can differ.</p>
-<p><strong>Control:</strong> added noise and interruptions disabled; telephone audio still applies. <strong>Regular:</strong> native benchmark settings, which can include noise and interruptions.</p>
-<p class="fine">Selected from reported retail ASR failures involving names, spelling, emails, digits, negation and background speech. Six scenarios are for development and eight for evaluation, with separate caller identities. This targeted subset does not estimate general retail accuracy. Scenario details appear below.</p>
-</section>
-<section aria-labelledby="setup"><h2 id="setup">Model setup</h2>
-<dl>
-<div><dt>Caller LLM</dt><dd>GPT-5.5</dd></div>
-<div><dt>Caller voice</dt><dd>Gemini 3.8 Flash TTS · Kore</dd></div>
-<div><dt>Agent ASR</dt><dd>Hosted Nemotron Streaming English<br><span class="muted">Cache-aware Parakeet RNN-T + Sortformer</span></dd></div>
-<div><dt>Agent LLM</dt><dd>Nemotron 3.5 Super VL</dd></div>
-<div><dt>Agent voice</dt><dd>Magpie Multilingual 357m · Aria</dd></div>
-</dl>
-<p class="fine">LLM = conversational model; TTS = text-to-speech; ASR = speech-to-text. ASR weights and settings were unchanged. Seed 300; pinned native tasks and scoring.</p>
-</section>
-</div>
-
-<section aria-labelledby="method"><h2 id="method">How WER was measured</h2>
-<div class="flow" aria-label="Four measurement steps">
-<div><b>1 · Capture</b><span>Save the exact audio delivered to the agent’s ASR and its final transcripts.</span></div>
-<div><b>2 · Check audio</b><span>Gemini transcribes independently, without scripts, expected answers or agent ASR text.</span></div>
-<div><b>3 · Align &amp; count</b><span>Match audio and final ASR by time/IDs; count replaced, missing and extra words.</span></div>
-<div><b>4 · Keep task score</b><span>Save the benchmark’s separate pass/fail result, tool calls and unmet goals.</span></div>
-</div>
-<p class="fine"><strong>WER = (replaced + missing + extra words) ÷ reference words.</strong> The pooled rate uses total errors / total words, not the average of conversation percentages. All delivered audio and final ASR events are included, including output during silence; temporary ASR guesses are excluded. Text is lowercased, apostrophes removed, other punctuation replaced by spaces and whitespace collapsed. Names and digits are not corrected; number/email formatting can affect the count.</p>
+<section aria-labelledby="live"><h2 id="live">Latest: 18 live caller conversations</h2>
+<div class="table-wrap"><table><caption>Original ASR versus selected name corrections, applied after ASR and before the assistant reads the text.</caption>
+<thead><tr><th scope="col">Outcome</th><th scope="col">Original ASR</th><th scope="col">Selected name corrections</th></tr></thead><tbody>
+<tr><th scope="row">Tasks passed</th><td>0/9</td><td>0/9</td></tr>
+<tr><th scope="row">Customer/account retrieved</th><td>1/9</td><td>3/9</td></tr>
+<tr><th scope="row">Calls with a correction delivered</th><td>—</td><td>6/9</td></tr></tbody></table></div>
+<p class="fine">Two retail tasks (005 and 037), represented by three task/preset cases × two versions × three repetitions = 18 calls. Seeds 301–303 matched within pairs; dialogue and audio could still diverge. Retrieval includes direct account access and does not by itself establish policy-compliant authentication or a task rescue.</p>
+<details><summary>Live results by task and speech preset</summary><div class="table-wrap"><table class="compact"><caption>Each count is out of three calls; arrows show original → corrected.</caption><thead><tr><th scope="col">Task / preset</th><th scope="col">Task passes</th><th scope="col">Account retrievals</th><th scope="col">Corrected calls with a word change</th></tr></thead><tbody><tr><th scope="row">005-control</th><td>0/3 → 0/3</td><td>0/3 → 1/3</td><td>1/3</td></tr><tr><th scope="row">005-regular</th><td>0/3 → 0/3</td><td>0/3 → 0/3</td><td>3/3</td></tr><tr><th scope="row">037-regular</th><td>0/3 → 0/3</td><td>1/3 → 2/3</td><td>2/3</td></tr></tbody></table></div></details>
+<p class="note"><strong>Scoring:</strong> 15 calls completed native checks and all scored 0. Two timeouts (one per version) and one original call with repeated tool errors received automatic zeros; their final database/language checks were skipped. Four startup failures remain unscored and were replaced once. Six pilot calls, all scoring 0, are separate from the main 18.</p>
 </section>
 
-<section aria-labelledby="results"><h2 id="results">Results by speech preset</h2>
-<div class="table-wrap"><table>
-<caption>All 28 conversations have task scores and automated audio audits. WER covers only the 26 complete machine references.</caption>
-<thead><tr><th scope="col">Preset</th><th scope="col">Provisional WER</th><th scope="col">Complete references</th><th scope="col">Tasks passed</th></tr></thead>
-<tbody><tr><th scope="row">Control</th><td class="number">6.68%</td><td>14/14</td><td>1/14</td></tr><tr><th scope="row">Regular</th><td class="number">10.50%</td><td>12/14</td><td>1/14</td></tr></tbody></table></div>
-<p class="fine"><strong>Two reference gaps:</strong> 035 regular has a verifier response blocked by a content filter; 037 regular has unresolved inaudible speech. Their full WER is withheld, but their task scores remain included. The presets produced different dialogue and have different reference coverage, so the WER difference does not isolate the effect of noise.</p>
-</section>
+<section aria-labelledby="observations"><h2 id="observations">What still blocked completion</h2><ul>
+<li><strong>037, corrected, repetition 1:</strong> found the customer and order and answered both price requirements, but made no required order change. Language requirements passed; the database check failed.</li>
+<li><strong>037, corrected, repetition 2:</strong> found the account, but cancelled the whole order instead of making the required item changes. The database check failed.</li>
+<li><strong>3 corrected calls received a name fix but executed no retail tools.</strong> Better name text alone did not resolve those stalls.</li></ul>
+<p class="fine">These are observed outcomes, not proof of a single cause. The sample is small; the retrieval-count difference does not establish a reliable causal benefit. This tests selected name forms, not perfect ASR or a trained LM. <a href="./live-caller.html">Full live-comparison method and limits</a>.</p></section>
 
+<section aria-labelledby="baseline"><h2 id="baseline">Earlier baseline: WER remains provisional</h2>
+<p><strong>14 retail tasks × two speech presets = 28 baseline conversations; 2 passed.</strong> Provisional pooled WER was <strong>8.41%</strong> (318 errors / 3,781 words) across 26 complete machine references. There are <strong>zero human-certified golden references</strong>. Task 035 regular has a verifier-filter gap; 037 regular has unresolved inaudible speech. Their full WER is withheld.</p>
+<p class="fine">The targeted subset covered names, spelling, emails, digits, negation and background speech when errors plausibly affected task completion. Six tasks were for development and eight for evaluation, with separate identities. The initial trajectory review identified three likely ASR contributions among 26 failures; this was a qualitative judgment, not three demonstrated rescues. Earlier frozen-text replays also produced no task passes. <a href="./investigation.html">Initial review</a> · <a href="./counterfactual.html">Text replay</a>.</p>
+<p class="fine">The baseline and live comparison are separate experiments; their counts are not pooled. No new live-run WER or LM-on/off WER has been calculated.</p></section>
 <details><summary>Scenario results · all 14 situations / 28 conversations</summary>
 <div class="table-wrap"><table class="compact">
 <caption>Focus describes the historical failure used for selection, not proof that it recurred. WER values are provisional. Labels under failed task scores show the trajectory-based judgment; passing cases are outside the 26-failure judgment count.</caption>
@@ -87,26 +54,18 @@ ul,ol{padding-left:21px;margin:9px 0}li{margin:7px 0}.next li{font-size:14px}a{c
 <tbody><tr><th scope="row">005<small>development</small></th><td>Name in a user ID</td><td class="number">4.72%</td><td><span class="result fail">Fail</span><small>Likely ASR contribution</small></td><td class="number">20.00%</td><td><span class="result fail">Fail</span><small>Likely ASR contribution</small></td></tr><tr><th scope="row">025<small>evaluation</small></th><td>Surname + postal code lookup</td><td class="number">6.91%</td><td><span class="result fail">Fail</span><small>Other primary explanation</small></td><td class="number">11.50%</td><td><span class="result pass">Pass</span></td></tr><tr><th scope="row">035<small>development</small></th><td>Name, email and underscores</td><td class="number">11.00%</td><td><span class="result fail">Fail</span><small>Unclear</small></td><td class="number">Pending</td><td><span class="result fail">Fail</span><small>Unclear</small></td></tr><tr><th scope="row">037<small>development</small></th><td>Spelled surname</td><td class="number">1.85%</td><td><span class="result fail">Fail</span><small>Other primary explanation</small></td><td class="number">Pending</td><td><span class="result fail">Fail</span><small>Likely ASR contribution</small></td></tr><tr><th scope="row">047<small>evaluation</small></th><td>Name + order-number repair</td><td class="number">7.37%</td><td><span class="result fail">Fail</span><small>Other primary explanation</small></td><td class="number">27.16%</td><td><span class="result fail">Fail</span><small>Unclear</small></td></tr><tr><th scope="row">064<small>development</small></th><td>Missing postal-code digits</td><td class="number">2.75%</td><td><span class="result fail">Fail</span><small>Other primary explanation</small></td><td class="number">9.73%</td><td><span class="result fail">Fail</span><small>Other primary explanation</small></td></tr><tr><th scope="row">076<small>evaluation</small></th><td>Similar-sounding names</td><td class="number">6.80%</td><td><span class="result fail">Fail</span><small>Other primary explanation</small></td><td class="number">13.28%</td><td><span class="result fail">Fail</span><small>Other primary explanation</small></td></tr><tr><th scope="row">078<small>evaluation</small></th><td>Email separator: dot</td><td class="number">5.87%</td><td><span class="result pass">Pass</span></td><td class="number">5.83%</td><td><span class="result fail">Fail</span><small>Other primary explanation</small></td></tr><tr><th scope="row">088<small>development</small></th><td>Leading email digit + surname</td><td class="number">0.67%</td><td><span class="result fail">Fail</span><small>Other primary explanation</small></td><td class="number">7.58%</td><td><span class="result fail">Fail</span><small>Other primary explanation</small></td></tr><tr><th scope="row">097<small>evaluation</small></th><td>Background TV speech</td><td class="number">20.00%</td><td><span class="result fail">Fail</span><small>Other primary explanation</small></td><td class="number">3.92%</td><td><span class="result fail">Fail</span><small>Other primary explanation</small></td></tr><tr><th scope="row">099<small>evaluation</small></th><td>Name spelling ambiguity</td><td class="number">3.96%</td><td><span class="result fail">Fail</span><small>Other primary explanation</small></td><td class="number">5.08%</td><td><span class="result fail">Fail</span><small>Other primary explanation</small></td></tr><tr><th scope="row">105<small>evaluation</small></th><td>Name + postal code lookup</td><td class="number">10.61%</td><td><span class="result fail">Fail</span><small>Other primary explanation</small></td><td class="number">5.47%</td><td><span class="result fail">Fail</span><small>Other primary explanation</small></td></tr><tr><th scope="row">106<small>evaluation</small></th><td>Leading email digits</td><td class="number">8.70%</td><td><span class="result fail">Fail</span><small>Other primary explanation</small></td><td class="number">20.00%</td><td><span class="result fail">Fail</span><small>Unclear</small></td></tr><tr><th scope="row">111<small>development</small></th><td>Missing negation: don&#x27;t</td><td class="number">9.09%</td><td><span class="result fail">Fail</span><small>Other primary explanation</small></td><td class="number">12.12%</td><td><span class="result fail">Fail</span><small>Other primary explanation</small></td></tr></tbody></table></div>
 </details>
 
-<section aria-labelledby="investigation"><h2 id="investigation">Supporting investigation</h2><p><strong>9 failed calls stalled before any tool; 11 failed at identifier lookup; 6 reached account/order data before failing.</strong> These are observed stages, not proven causes.</p><p class="fine">Examples: 088 regular has the email digits in ASR, but the agent adds a dot that breaks lookup. 025 control processes a PayPal return despite ASR saying “Amex … not PayPal”. Offline replay reproduced all 28 database checks. Human audio review and full corrected-ASR conversation tests remain pending. Scoring also needs review: 025 regular passes without an executed transfer/order change; 105’s reference exchange itself fails for insufficient gift-card balance.</p></section>
+<section aria-labelledby="evidence"><h2 id="evidence">Audio and experiment checks</h2>
+<p>Exact delivered audio was matched to final ASR events; interim guesses were excluded. All nine applied name replacements reached the assistant. Twenty targeted audio clips have saved blind Gemini and GPT Transcribe checks. Machine agreement does not resolve every name spelling or create human-certified gold.</p>
+<p class="fine">Baseline WER counts substituted, missing and extra words against delivered-audio references, pooled by total reference words. Raw/forwarded ASR, audio hashes, tool traces, native score components and all retained attempts remain in local evidence.</p></section>
 
-<section aria-labelledby="limits"><h2 id="limits">What limits the comparison</h2>
-<p><strong>Human listening is required before calling this golden WER.</strong> Machine references are drafts, including the 26 that are complete. Lower WER alone does not prove better task success: reasoning, timing and interruptions also matter.</p>
-<p class="fine">Runtime repairs were needed for startup dependencies, cancelled tools, assistant TTS and interrupted conversation history. The 28 scored conversations span these runtime versions. 40 total attempts are preserved, including 12 infrastructure failures without task scores; no scored task failure was rerun to seek a pass. Integrity checks passed for every selected case and saved attempt. Audio, final ASR, references, tools and native scores are retained in the source evidence.</p>
-</section>
+<section aria-labelledby="setup"><h2 id="setup">Models held fixed</h2>
+<dl><div><dt>Caller</dt><dd>GPT-5.5 → Gemini 3.8 Flash TTS, Kore</dd></div>
+<div><dt>Voice agent</dt><dd>Hosted Nemotron Streaming English ASR → Nemotron 3.5 Super VL → Magpie 357m, Aria</dd></div></dl>
+<p class="fine">Both live versions used the same saved runtime, retail tools and settings. The caller reacts to assistant transcript fragments synchronized with played audio. Caller speech still passes through actual TTS, telephone processing and agent-side ASR.</p></section>
 
-<section aria-labelledby="next"><h2 id="next">Next steps</h2>
-<ol class="next">
-<li><strong>Cross-check audio references:</strong> add a second model family to the existing Gemini checks. Use consistent agreements provisionally; retain disagreements and the two reference gaps as unresolved. This additional verification is proposed, not completed.</li>
-<li><strong>Prioritize likely ASR contributions:</strong> review the three evidence chains above, including agent recovery errors. Use paired transcript-correction tests to measure task rescues; these are not required to make a qualified trajectory judgment.</li>
-<li><strong>Train and compare:</strong> build an external language model from separate domain text, then replay identical frozen audio with LM off/on and compare WER. Exclude selected tasks, identities, audio and references from training.</li>
-<li><strong>Compare task success fairly:</strong> establish a baseline on one stable repaired runtime and hold other components fixed for new conversations. Check other domains for regressions.</li>
-</ol>
-</section>
-
-<footer>
-<p><strong>Sources:</strong> saved baseline results and integrity validation, snapshot 2026-11-17 07:58:30 UTC; trajectory judgments 2026-11-17 09:06:53 UTC · <a href="https://github.com/sierra-research/tau2-bench">Tau2 benchmark</a> · <a href="https://github.com/NVIDIA-AI-Blueprints/nemotron-voice-agent">Nemotron Voice Agent Blueprint</a>.</p>
-<p>Standalone report: no network connection, scripts or companion files required. Raw audio and transcripts remain in the experiment evidence and are not bundled here.</p>
-</footer>
-</main>
-</body>
-</html>
+<section aria-labelledby="next"><h2 id="next">Recommended next steps</h2><ol class="next">
+<li><strong>For task success:</strong> fix tool execution, identifier handling, order-change behavior and voice-flow stalls before expanding task-rescue claims.</li>
+<li><strong>For ASR:</strong> complete human reference review. Any later LM trial should use separate domain text and the same frozen audio for LM-off/on WER and identifier checks, followed by live task and other-domain comparisons. Keep selected POC tasks, identities and references out of training.</li></ol></section>
+<footer><p>Report updated 18 November 2026; baseline and live experiments ran 17 November 2026. No new runs or training are represented by this update.</p>
+<p><a href="https://github.com/sierra-research/tau2-bench">Tau2 benchmark</a> · <a href="https://github.com/NVIDIA-AI-Blueprints/nemotron-voice-agent">Nemotron Voice Agent Blueprint</a>. Only derived HTML is public; full recordings and trajectories remain local.</p></footer>
+</main></body></html>
