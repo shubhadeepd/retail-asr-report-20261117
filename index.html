@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- results.json SHA-256: 361a44f3e20ab513c5f43a4516b08c0a4dce4828bba0d10ef583065473d54c9b -->
+<meta charset="utf-8"><meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Retail ASR baseline: 14 scenarios, 28 scored voice conversations. Provisional WER and task outcomes, with review limitations.">
+<title>Retail ASR baseline · 17 Nov 2026</title>
+<style>
+:root{color-scheme:light;--ink:#192820;--muted:#526359;--line:#dce4de;--green:#315d16;--wash:#f2f6ee;--amber:#805813}
+*{box-sizing:border-box}body{margin:0;background:#f4f6f3;color:var(--ink);font:15px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+main{max-width:960px;margin:32px auto;padding:38px 42px;background:white;border:1px solid var(--line);border-radius:16px}
+.eyebrow{margin:0 0 10px;color:var(--muted);font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
+h1{margin:0;font-size:clamp(27px,5vw,38px);letter-spacing:-.035em;line-height:1.15}h2{font-size:18px;letter-spacing:-.015em;margin:27px 0 10px}p{margin:9px 0}
+.lede{color:var(--muted);max-width:760px}.status{display:inline-block;margin-top:10px;background:#fff5df;color:var(--amber);border:1px solid #ecdbb6;border-radius:6px;font-size:12px;font-weight:650;padding:5px 10px}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:22px 0 16px}.metric{padding:17px 18px;background:var(--wash);border:1px solid #dce8d2;border-radius:10px}.metric strong{display:block;font-size:35px;letter-spacing:-.04em;line-height:1.2}.metric span{display:block;font-weight:650;margin:4px 0}.metric small{color:var(--muted);font-size:12px}
+.note{padding:11px 14px;border-left:3px solid #83a75d;background:#f7f9f5;font-size:13px}.muted{color:var(--muted)}
+.two-col{display:grid;grid-template-columns:1.05fr 1fr;gap:26px}.two-col h2{margin-top:23px}
+dl{margin:0}dl div{display:grid;grid-template-columns:93px 1fr;gap:8px;padding:5px 0;border-bottom:1px solid #edf0ec;font-size:13px}dt{color:var(--muted)}dd{margin:0}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}.flow div{padding:12px;background:#f6f8f5;border:1px solid var(--line);border-radius:8px;font-size:12px}.flow b{display:block;font-size:13px;margin-bottom:5px}.flow span{color:var(--muted)}
+table{width:100%;border-collapse:collapse;font-size:13px}caption{text-align:left;font-size:12px;color:var(--muted);margin:0 0 10px}th,td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}thead th{font-size:11px;color:var(--muted);background:#f6f8f5;font-weight:650}tbody th{font-weight:650}.number{font-variant-numeric:tabular-nums;white-space:nowrap}td small,th small{display:block;font-weight:400;font-size:10px;color:var(--muted)}
+.result{font-size:11px;font-weight:650}.pass{color:#286213}.fail{color:#775644}.table-wrap{overflow-x:auto}.compact{font-size:12px}.compact th,.compact td{padding:7px 9px}
+details{border:1px solid var(--line);border-radius:9px;margin-top:22px;padding:12px 14px}summary{cursor:pointer;font-size:14px;font-weight:650}details .table-wrap{margin-top:14px}
+ul,ol{padding-left:21px;margin:9px 0}li{margin:7px 0}.next li{font-size:14px}a{color:var(--green);text-underline-offset:3px}.fine{font-size:12px;color:var(--muted)}footer{border-top:1px solid var(--line);padding-top:15px;margin-top:23px;font-size:11px;color:var(--muted)}footer p{margin:4px 0}
+@media(max-width:650px){main{margin:0;padding:24px 18px;border:0;border-radius:0}.metrics{gap:7px}.metric{padding:12px 10px}.metric strong{font-size:28px}.metric span{font-size:12px}.two-col{grid-template-columns:1fr;gap:0}.flow{grid-template-columns:repeat(2,1fr)}th,td{padding:8px 6px}.compact{min-width:630px}}
+@media print{body{background:white;font-size:10pt}main{max-width:none;margin:0;padding:0;border:0}.metrics,.flow,tr{break-inside:avoid}h2{break-after:avoid}.metric{print-color-adjust:exact}details{break-inside:auto}details::details-content{display:contents;content-visibility:visible}details>*:not(summary){display:block!important}summary{list-style:none}.table-wrap{overflow:visible}.compact{font-size:9pt}a{color:inherit}footer{font-size:8pt}}
+</style>
+</head>
+<body>
+<main><nav aria-label="Report pages" style="font-size:12px;margin-bottom:18px"><a href="./">Summary report</a> · <a href="./investigation.html">Detailed investigation</a></nav>
+<header>
+<p class="eyebrow">ASR language-model customization · Retail POC · 17 Nov 2026</p>
+<h1>Retail voice ASR baseline</h1>
+<p class="lede">Measure speech-recognition errors before customization, then determine which errors actually prevent the assistant from completing a customer’s request.</p>
+<span class="status">Provisional baseline · No language-model training performed</span>
+</header>
+
+<div class="metrics" aria-label="Key results">
+<div class="metric"><strong>8.41%</strong><span>Provisional word error rate</span><small>318 errors / 3,781 words · 26 conversations</small></div>
+<div class="metric"><strong>2 / 28</strong><span>Conversations passed</span><small>26 failed · native benchmark task scores</small></div>
+<div class="metric"><strong>0 / 28</strong><span>Human-verified references</span><small>Golden WER is still pending</small></div>
+</div>
+<p class="note"><strong>Review judgment: 3 of 26 failures likely involve an ASR contribution.</strong> Mixed causes are possible. This does not establish how many tasks would be rescued by an ASR correction or LM training.</p>
+
+<section aria-labelledby="trajectory-judgment"><h2 id="trajectory-judgment">Did ASR contribute to the failures?</h2><p><strong>Trajectory-based judgment: ASR likely contributed to 3 of the 26 failed conversations.</strong> 19 have stronger agent, voice-flow or task-criteria explanations; 4 remain unclear.</p><div class="table-wrap scroll"><table><caption>Likely contributions, including mixed causes. Each judgment has moderate confidence and uses provisional machine audio references.</caption><thead><tr><th scope="col">Conversation</th><th scope="col">Evidence chain</th></tr></thead><tbody><tr><th scope="row">005-control</th><td>Audio draft: Kovacs → ASR: COVAX → lookup uses covax → user not found. Unspelled-name ambiguity and agent assembly errors remain.</td></tr><tr><th scope="row">005-regular</th><td>Kovacs → Kovac → mei_kovac_8020 lookup fails. The agent also fails to use later correct spelled letters.</td></tr><tr><th scope="row">037-regular</th><td>Audio draft: Daiki → ASR: Dakey → name/postal-code lookup fails; the order is never retrieved.</td></tr></tbody></table></div><p class="fine"><strong>This is a qualitative judgment, not a measured task-rescue count.</strong> No case is established as caused solely by ASR. A stronger other-cause explanation does not rule out an ASR contribution. Paired correction tests would measure whether fixing the transcript actually makes the task pass; none have run.</p></section>
+
+<div class="two-col">
+<section aria-labelledby="scope"><h2 id="scope">What we tested</h2>
+<p><strong>14 customer situations × 2 speech presets = 28 conversations.</strong> Each situation keeps the same customer goal, but the actual words and conversation path can differ.</p>
+<p><strong>Control:</strong> added noise and interruptions disabled; telephone audio still applies. <strong>Regular:</strong> native benchmark settings, which can include noise and interruptions.</p>
+<p class="fine">Selected from reported retail ASR failures involving names, spelling, emails, digits, negation and background speech. Six scenarios are for development and eight for evaluation, with separate caller identities. This targeted subset does not estimate general retail accuracy. Scenario details appear below.</p>
+</section>
+<section aria-labelledby="setup"><h2 id="setup">Model setup</h2>
+<dl>
+<div><dt>Caller LLM</dt><dd>GPT-5.5</dd></div>
+<div><dt>Caller voice</dt><dd>Gemini 3.8 Flash TTS · Kore</dd></div>
+<div><dt>Agent ASR</dt><dd>Hosted Nemotron Streaming English<br><span class="muted">Cache-aware Parakeet RNN-T + Sortformer</span></dd></div>
+<div><dt>Agent LLM</dt><dd>Nemotron 3.5 Super VL</dd></div>
+<div><dt>Agent voice</dt><dd>Magpie Multilingual 357m · Aria</dd></div>
+</dl>
+<p class="fine">LLM = conversational model; TTS = text-to-speech; ASR = speech-to-text. ASR weights and settings were unchanged. Seed 300; pinned native tasks and scoring.</p>
+</section>
+</div>
+
+<section aria-labelledby="method"><h2 id="method">How WER was measured</h2>
+<div class="flow" aria-label="Four measurement steps">
+<div><b>1 · Capture</b><span>Save the exact audio delivered to the agent’s ASR and its final transcripts.</span></div>
+<div><b>2 · Check audio</b><span>Gemini transcribes independently, without scripts, expected answers or agent ASR text.</span></div>
+<div><b>3 · Align &amp; count</b><span>Match audio and final ASR by time/IDs; count replaced, missing and extra words.</span></div>
+<div><b>4 · Keep task score</b><span>Save the benchmark’s separate pass/fail result, tool calls and unmet goals.</span></div>
+</div>
+<p class="fine"><strong>WER = (replaced + missing + extra words) ÷ reference words.</strong> The pooled rate uses total errors / total words, not the average of conversation percentages. All delivered audio and final ASR events are included, including output during silence; temporary ASR guesses are excluded. Text is lowercased, apostrophes removed, other punctuation replaced by spaces and whitespace collapsed. Names and digits are not corrected; number/email formatting can affect the count.</p>
+</section>
+
+<section aria-labelledby="results"><h2 id="results">Results by speech preset</h2>
+<div class="table-wrap"><table>
+<caption>All 28 conversations have task scores and automated audio audits. WER covers only the 26 complete machine references.</caption>
+<thead><tr><th scope="col">Preset</th><th scope="col">Provisional WER</th><th scope="col">Complete references</th><th scope="col">Tasks passed</th></tr></thead>
+<tbody><tr><th scope="row">Control</th><td class="number">6.68%</td><td>14/14</td><td>1/14</td></tr><tr><th scope="row">Regular</th><td class="number">10.50%</td><td>12/14</td><td>1/14</td></tr></tbody></table></div>
+<p class="fine"><strong>Two reference gaps:</strong> 035 regular has a verifier response blocked by a content filter; 037 regular has unresolved inaudible speech. Their full WER is withheld, but their task scores remain included. The presets produced different dialogue and have different reference coverage, so the WER difference does not isolate the effect of noise.</p>
+</section>
+
+<details><summary>Scenario results · all 14 situations / 28 conversations</summary>
+<div class="table-wrap"><table class="compact">
+<caption>Focus describes the historical failure used for selection, not proof that it recurred. WER values are provisional. Labels under failed task scores show the trajectory-based judgment; passing cases are outside the 26-failure judgment count.</caption>
+<thead><tr><th scope="col">Scenario</th><th scope="col">Selection focus</th><th scope="col">Control WER</th><th scope="col">Task</th><th scope="col">Regular WER</th><th scope="col">Task</th></tr></thead>
+<tbody><tr><th scope="row">005<small>development</small></th><td>Name in a user ID</td><td class="number">4.72%</td><td><span class="result fail">Fail</span><small>Likely ASR contribution</small></td><td class="number">20.00%</td><td><span class="result fail">Fail</span><small>Likely ASR contribution</small></td></tr><tr><th scope="row">025<small>evaluation</small></th><td>Surname + postal code lookup</td><td class="number">6.91%</td><td><span class="result fail">Fail</span><small>Other primary explanation</small></td><td class="number">11.50%</td><td><span class="result pass">Pass</span></td></tr><tr><th scope="row">035<small>development</small></th><td>Name, email and underscores</td><td class="number">11.00%</td><td><span class="result fail">Fail</span><small>Unclear</small></td><td class="number">Pending</td><td><span class="result fail">Fail</span><small>Unclear</small></td></tr><tr><th scope="row">037<small>development</small></th><td>Spelled surname</td><td class="number">1.85%</td><td><span class="result fail">Fail</span><small>Other primary explanation</small></td><td class="number">Pending</td><td><span class="result fail">Fail</span><small>Likely ASR contribution</small></td></tr><tr><th scope="row">047<small>evaluation</small></th><td>Name + order-number repair</td><td class="number">7.37%</td><td><span class="result fail">Fail</span><small>Other primary explanation</small></td><td class="number">27.16%</td><td><span class="result fail">Fail</span><small>Unclear</small></td></tr><tr><th scope="row">064<small>development</small></th><td>Missing postal-code digits</td><td class="number">2.75%</td><td><span class="result fail">Fail</span><small>Other primary explanation</small></td><td class="number">9.73%</td><td><span class="result fail">Fail</span><small>Other primary explanation</small></td></tr><tr><th scope="row">076<small>evaluation</small></th><td>Similar-sounding names</td><td class="number">6.80%</td><td><span class="result fail">Fail</span><small>Other primary explanation</small></td><td class="number">13.28%</td><td><span class="result fail">Fail</span><small>Other primary explanation</small></td></tr><tr><th scope="row">078<small>evaluation</small></th><td>Email separator: dot</td><td class="number">5.87%</td><td><span class="result pass">Pass</span></td><td class="number">5.83%</td><td><span class="result fail">Fail</span><small>Other primary explanation</small></td></tr><tr><th scope="row">088<small>development</small></th><td>Leading email digit + surname</td><td class="number">0.67%</td><td><span class="result fail">Fail</span><small>Other primary explanation</small></td><td class="number">7.58%</td><td><span class="result fail">Fail</span><small>Other primary explanation</small></td></tr><tr><th scope="row">097<small>evaluation</small></th><td>Background TV speech</td><td class="number">20.00%</td><td><span class="result fail">Fail</span><small>Other primary explanation</small></td><td class="number">3.92%</td><td><span class="result fail">Fail</span><small>Other primary explanation</small></td></tr><tr><th scope="row">099<small>evaluation</small></th><td>Name spelling ambiguity</td><td class="number">3.96%</td><td><span class="result fail">Fail</span><small>Other primary explanation</small></td><td class="number">5.08%</td><td><span class="result fail">Fail</span><small>Other primary explanation</small></td></tr><tr><th scope="row">105<small>evaluation</small></th><td>Name + postal code lookup</td><td class="number">10.61%</td><td><span class="result fail">Fail</span><small>Other primary explanation</small></td><td class="number">5.47%</td><td><span class="result fail">Fail</span><small>Other primary explanation</small></td></tr><tr><th scope="row">106<small>evaluation</small></th><td>Leading email digits</td><td class="number">8.70%</td><td><span class="result fail">Fail</span><small>Other primary explanation</small></td><td class="number">20.00%</td><td><span class="result fail">Fail</span><small>Unclear</small></td></tr><tr><th scope="row">111<small>development</small></th><td>Missing negation: don&#x27;t</td><td class="number">9.09%</td><td><span class="result fail">Fail</span><small>Other primary explanation</small></td><td class="number">12.12%</td><td><span class="result fail">Fail</span><small>Other primary explanation</small></td></tr></tbody></table></div>
+</details>
+
+<section aria-labelledby="investigation"><h2 id="investigation">Supporting investigation</h2><p><strong>9 failed calls stalled before any tool; 11 failed at identifier lookup; 6 reached account/order data before failing.</strong> These are observed stages, not proven causes.</p><p class="fine">Examples: 088 regular has the email digits in ASR, but the agent adds a dot that breaks lookup. 025 control processes a PayPal return despite ASR saying “Amex … not PayPal”. Offline replay reproduced all 28 database checks. Human audio review and full corrected-ASR conversation tests remain pending. Scoring also needs review: 025 regular passes without an executed transfer/order change; 105’s reference exchange itself fails for insufficient gift-card balance.</p></section>
+
+<section aria-labelledby="limits"><h2 id="limits">What limits the comparison</h2>
+<p><strong>Human listening is required before calling this golden WER.</strong> Machine references are drafts, including the 26 that are complete. Lower WER alone does not prove better task success: reasoning, timing and interruptions also matter.</p>
+<p class="fine">Runtime repairs were needed for startup dependencies, cancelled tools, assistant TTS and interrupted conversation history. The 28 scored conversations span these runtime versions. 40 total attempts are preserved, including 12 infrastructure failures without task scores; no scored task failure was rerun to seek a pass. Integrity checks passed for every selected case and saved attempt. Audio, final ASR, references, tools and native scores are retained in the source evidence.</p>
+</section>
+
+<section aria-labelledby="next"><h2 id="next">Next steps</h2>
+<ol class="next">
+<li><strong>Cross-check audio references:</strong> add a second model family to the existing Gemini checks. Use consistent agreements provisionally; retain disagreements and the two reference gaps as unresolved. This additional verification is proposed, not completed.</li>
+<li><strong>Prioritize likely ASR contributions:</strong> review the three evidence chains above, including agent recovery errors. Use paired transcript-correction tests to measure task rescues; these are not required to make a qualified trajectory judgment.</li>
+<li><strong>Train and compare:</strong> build an external language model from separate domain text, then replay identical frozen audio with LM off/on and compare WER. Exclude selected tasks, identities, audio and references from training.</li>
+<li><strong>Compare task success fairly:</strong> establish a baseline on one stable repaired runtime and hold other components fixed for new conversations. Check other domains for regressions.</li>
+</ol>
+</section>
+
+<footer>
+<p><strong>Sources:</strong> saved baseline results and integrity validation, snapshot 2026-11-17 07:58:30 UTC; trajectory judgments 2026-11-17 09:06:53 UTC · <a href="https://github.com/sierra-research/tau2-bench">Tau2 benchmark</a> · <a href="https://github.com/NVIDIA-AI-Blueprints/nemotron-voice-agent">Nemotron Voice Agent Blueprint</a>.</p>
+<p>Standalone report: no network connection, scripts or companion files required. Raw audio and transcripts remain in the experiment evidence and are not bundled here.</p>
+</footer>
+</main>
+</body>
+</html>
