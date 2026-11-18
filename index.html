@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <meta name="description" content="Tau Voice results with task scores, provisional word error rate, and ASR-related extra turns.">
-<meta name="report-source-updated-at" content="2026-11-18T19:49:50.858080+00:00">
+<meta name="report-source-updated-at" content="2026-11-18T20:00:30.936224+00:00">
 <title>Tau Voice · Latest ASR findings</title>
 <style>
 :root{color-scheme:light;--ink:#18273e;--muted:#596b82;--line:#dce4ee;--surface:#fff;--pass:#218463;--fail:#cf6375;--unscored:#aab6c7;--agent:#637995;--asr:#167b94;--unclear:#d39b29}
@@ -36,7 +36,7 @@ footer{margin-top:21px;padding:0 2px;color:var(--muted);font-size:11px;line-heig
   <header>
     <div class="topline"><p class="eyebrow">Tau Voice / Latest findings</p><span class="date">Results: 19 Nov 2026</span></div>
     <h1>How did speech recognition affect calls?</h1>
-    <p>ASR likely contributed to <strong>13 task failures</strong>. <strong>106 calls</strong> had an extra turn linked to ASR.</p>
+    <p>ASR likely contributed to <strong>20 task failures</strong>. <strong>118 calls</strong> had an extra turn linked to ASR.</p>
     <div class="pills"><span class="pill">3 domains</span><span class="pill">Regular speech</span><span class="pill">254 valid task scores</span><span class="pill">No fine-tuning in this cohort</span></div>
   </header>
 
@@ -94,14 +94,14 @@ footer{margin-top:21px;padding:0 2px;color:var(--muted);font-size:11px;line-heig
 
   <section class="panel" aria-labelledby="impact-title">
     <div class="impact-header"><h2 id="impact-title">What explains the 215 scored failures?</h2><span>Automated judgments · not proven causal effects</span></div>
-    <div class="stack impact-stack" aria-hidden="true"><span class="segment agent" style="width:93.02325581%"></span><span class="segment asr" style="width:6.04651163%"></span><span class="segment unclear" style="width:0.93023256%"></span></div>
+    <div class="stack impact-stack" aria-hidden="true"><span class="segment agent" style="width:88.37209302%"></span><span class="segment asr" style="width:9.30232558%"></span><span class="segment unclear" style="width:2.32558140%"></span></div>
     <div class="impact-key">
-      <div><div class="impact-number"><i class="dot agent" aria-hidden="true"></i>200</div><h3>Agent/tool explanation supported</h3><p>Reasoning, tool use or turn-taking better explains the failure.</p></div>
-      <div><div class="impact-number asr-text"><i class="dot asr" aria-hidden="true"></i>13</div><h3>Likely ASR contribution</h3><p>A recognition error connects to a wrong action or stalled task. Other problems may also exist.</p></div>
-      <div><div class="impact-number"><i class="dot unclear" aria-hidden="true"></i>2</div><h3>Unresolved</h3><p>Attribution is disputed, evidence needs checking, or review is incomplete.</p></div>
+      <div><div class="impact-number"><i class="dot agent" aria-hidden="true"></i>190</div><h3>Agent/tool explanation supported</h3><p>Reasoning, tool use or turn-taking better explains the failure.</p></div>
+      <div><div class="impact-number asr-text"><i class="dot asr" aria-hidden="true"></i>20</div><h3>Likely ASR contribution</h3><p>A recognition error connects to a wrong action or stalled task. Other problems may also exist.</p></div>
+      <div><div class="impact-number"><i class="dot unclear" aria-hidden="true"></i>5</div><h3>Unresolved</h3><p>Attribution is disputed, evidence needs checking, or review is incomplete.</p></div>
     </div>
-    <div class="unresolved"><strong>Why are 2 unresolved?</strong><div class="unresolved-counts"><span><b>2</b> Gemini found the cause unclear</span><span><b>0</b> evidence checks did not pass</span><span><b>0</b> review incomplete</span></div><p>Counts reflect the available audio and conversation evidence.</p></div>
-    <div class="domain-attribution"><span><b>Airline</b> 0 supported cases</span><span><b>Retail</b> 12 supported cases</span><span><b>Telecom</b> 1 supported cases</span></div>
+    <div class="unresolved"><strong>Why are 5 unresolved?</strong><div class="unresolved-counts"><span><b>5</b> cases GPT-5.5 found unclear</span><span><b>0</b> evidence checks did not pass</span><span><b>0</b> review incomplete</span></div><p>Counts reflect the available audio and conversation evidence.</p></div>
+    <div class="domain-attribution"><span><b>Airline</b> 2 supported cases</span><span><b>Retail</b> 17 supported cases</span><span><b>Telecom</b> 1 supported cases</span></div>
     <p class="note" style="margin-top:8px">Counts reflect the available evidence. Unscored attempts are excluded from task failure attribution.</p>
   </section>
 
@@ -110,33 +110,31 @@ footer{margin-top:21px;padding:0 2px;color:var(--muted);font-size:11px;line-heig
     <p class="intro">A call is flagged when a final ASR error likely caused a repeat, correction, or clarification.</p>
     <div class="experience-grid">
       <div class="experience-total">
-        <strong>106 / 278</strong>
-        <p>38.1% of reviewed calls had an ASR-related extra turn.</p>
-        <p><b>13</b> passed the task, <b>93</b> failed, and <b>0</b> were unscored. Of the failed calls, <b>9</b> also had evidence that ASR contributed to the task failure.</p>
+        <strong>118 / 278</strong>
+        <p>42.4% of reviewed calls had an ASR-related extra turn.</p>
+        <p><b>13</b> passed the task, <b>102</b> failed, and <b>3</b> were unscored. Of the failed calls, <b>16</b> also had evidence that ASR contributed to the task failure.</p>
       </div>
       <div><div class="chart-row">
         <div class="row-heading"><h3>Airline</h3><span><b>19 / 50</b> calls</span></div>
         <div class="experience-bar" aria-hidden="true"><span class="segment asr" style="width:38.00000000%"></span></div>
         <div class="row-caption"><span>5 passed · 14 failed · 0 unscored</span><span>38.0% flagged</span></div>
       </div><div class="chart-row">
-        <div class="row-heading"><h3>Retail</h3><span><b>56 / 114</b> calls</span></div>
-        <div class="experience-bar" aria-hidden="true"><span class="segment asr" style="width:49.12280702%"></span></div>
-        <div class="row-caption"><span>6 passed · 50 failed · 0 unscored</span><span>49.1% flagged</span></div>
+        <div class="row-heading"><h3>Retail</h3><span><b>58 / 114</b> calls</span></div>
+        <div class="experience-bar" aria-hidden="true"><span class="segment asr" style="width:50.87719298%"></span></div>
+        <div class="row-caption"><span>5 passed · 53 failed · 0 unscored</span><span>50.9% flagged</span></div>
       </div><div class="chart-row">
-        <div class="row-heading"><h3>Telecom</h3><span><b>31 / 114</b> calls</span></div>
-        <div class="experience-bar" aria-hidden="true"><span class="segment asr" style="width:27.19298246%"></span></div>
-        <div class="row-caption"><span>2 passed · 29 failed · 0 unscored</span><span>27.2% flagged</span></div>
+        <div class="row-heading"><h3>Telecom</h3><span><b>41 / 114</b> calls</span></div>
+        <div class="experience-bar" aria-hidden="true"><span class="segment asr" style="width:35.96491228%"></span></div>
+        <div class="row-caption"><span>3 passed · 35 failed · 3 unscored</span><span>36.0% flagged</span></div>
       </div></div>
     </div>
     <p class="experience-example"><strong>Example from a passing call.</strong> ASR dropped “don’t” from “I don’t remember my email address.” The agent asked for the address again, and the caller repeated that they didn’t remember it.</p>
-    <p class="note"><b>79</b> inconclusive · <b>93</b> with no linked extra turn found. The review included the last partial call for each of the 24 unscored tasks.</p>
+    <p class="note"><b>66</b> inconclusive · <b>94</b> with no linked extra turn found. The review included the last partial call for each of the 24 unscored tasks.</p>
   </section>
 
   <section class="takeaway" aria-labelledby="takeaway-title">
     <div><h2 id="takeaway-title">Does this justify LM training?</h2><p>These cases can help prioritize tests of language-model training. Task-score improvement requires a controlled comparison.</p></div>
-    <div class="example"><div class="example-label">One supported example · Retail task 68</div>
-      <div class="flow"><span>Spoken ZIP <b>98187</b></span><span class="arrow" aria-hidden="true">→</span><span>ASR <b>9817</b></span><span class="arrow" aria-hidden="true">→</span><span>Lookup failed</span></div>
-      <p>The account was not found and the caller never received the order total.</p></div>
+    
   </section>
 
   <section class="panel configuration" aria-labelledby="configuration-title">
@@ -152,14 +150,14 @@ footer{margin-top:21px;padding:0 2px;color:var(--muted);font-size:11px;line-heig
         <tr><th scope="row">Agent · speech</th><td>Magpie TTS Multilingual 357M</td><td>Voice Aria; US English</td></tr>
         <tr><th scope="row">Native task scoring</th><td>GPT-5.5</td><td>Task assertions at temperature 0, combined with native benchmark checks</td></tr>
         <tr><th scope="row">Audio verification</th><td>Gemini 3.8 Flash</td><td>Blind short-block, full-context and targeted passes</td></tr>
-        <tr><th scope="row">Task failure attribution</th><td>Gemini 3.8 Flash</td><td>Sole reviewer of the saved task failures, temperature 0</td></tr>
-        <tr><th scope="row">Experience degradation review</th><td>GPT-5.5</td><td>Sole reviewer of extra turns, temperature 0</td></tr>
+        <tr><th scope="row">Task failure attribution</th><td>GPT-5.5</td><td>Sole reviewer using Gemini 3.8 Flash audio references, temperature 0</td></tr>
+        <tr><th scope="row">Experience degradation review</th><td>GPT-5.5</td><td>Sole reviewer of extra turns, using Gemini audio references. Temperature 0</td></tr>
       </tbody>
     </table>
     <div class="run-settings"><span><b>Speech:</b> Regular</span><span><b>Seed:</b> 300</span><span><b>End of turn:</b> Silero, 500 ms silence</span><span><b>Deployment:</b> generic-assistant</span></div>
     <details>
       <summary>Exact model IDs &amp; reproducibility settings</summary>
-      <dl><div><dt>Caller LLM / task assertion judge</dt><dd><code>azure/openai/gpt-5.5</code></dd></div><div><dt>Caller speech</dt><dd><code>gcp/google/gemini-3.8-flash-tts</code></dd></div><div><dt>Agent ASR</dt><dd><code>nemotron-asr-streaming</code></dd></div><div><dt>Agent LLM</dt><dd><code>nvidia/nvidia/nemotron-3.5-super-vl</code></dd></div><div><dt>Agent speech</dt><dd><code>nvidia/nvidia/magpie-tts-multilingual-357m</code></dd></div><div><dt>Audio verification / task failure attribution</dt><dd><code>gcp/google/gemini-3.8-flash</code></dd></div><div><dt>Experience degradation reviewer</dt><dd><code>azure/openai/gpt-5.5</code></dd></div></dl>
+      <dl><div><dt>Caller LLM / task assertion judge</dt><dd><code>azure/openai/gpt-5.5</code></dd></div><div><dt>Caller speech</dt><dd><code>gcp/google/gemini-3.8-flash-tts</code></dd></div><div><dt>Agent ASR</dt><dd><code>nemotron-asr-streaming</code></dd></div><div><dt>Agent LLM</dt><dd><code>nvidia/nvidia/nemotron-3.5-super-vl</code></dd></div><div><dt>Agent speech</dt><dd><code>nvidia/nvidia/magpie-tts-multilingual-357m</code></dd></div><div><dt>Audio verification</dt><dd><code>gcp/google/gemini-3.8-flash</code></dd></div><div><dt>Task failure attribution</dt><dd><code>azure/openai/gpt-5.5</code></dd></div><div><dt>Experience degradation reviewer</dt><dd><code>azure/openai/gpt-5.5</code></dd></div></dl>
       <p class="config-limits">Agent LLM temperature was not explicitly overridden. Caller and scoring calls used NVIDIA Inference Hub; ASR used NVIDIA's hosted streaming endpoint. No external LM customization was applied.<br>Runtime limits: 1,200 seconds of benchmark steps; 1,800-second task timeout; 90-second response timeout. Scoring and caller temperature: 0.</p>
       <dl><div><dt>Dataset revision</dt><dd><code>fc0055dc4e0a316c3f83133267fbd6faaa770992</code></dd></div><div><dt>Evaluation runtime revision</dt><dd><code>2174a603f6d014ef94473ffa95957f6ce27100db</code></dd></div><div><dt>Agent image</dt><dd><code>nva-original-eva:c5b3f7c-2461ecc6</code></dd></div></dl>
     </details>
